@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "cac4bcff-9b7a-4f46-8895-7f8ca37e9f52": {
+      "ProjectGuid": "cac4bcff-9b7a-4f46-8895-7f8ca37e9f52",
+      "DisplayName": "Serveur",
+      "ColorIndex": 0
+    },
+    "a73cc268-bd13-4c54-9c83-d418dcd516fa": {
+      "ProjectGuid": "a73cc268-bd13-4c54-9c83-d418dcd516fa",
+      "DisplayName": "Client",
+      "ColorIndex": 1
+    },
+    "972c2fd9-2e09-4555-aac9-64a153f666d7": {
+      "ProjectGuid": "972c2fd9-2e09-4555-aac9-64a153f666d7",
+      "DisplayName": "Solution Items",
+      "ColorIndex": 2
+    },
+    "9852487e-9c3e-461f-b0a4-88813b88ea9e": {
+      "ProjectGuid": "9852487e-9c3e-461f-b0a4-88813b88ea9e",
+      "DisplayName": "MorpionBase",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}

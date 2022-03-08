@@ -1,0 +1,10 @@
+C:\Users\François\source\repos\AtelierMorpion\MorpionBase\bin\Debug\MorpionBase.dll
+C:\Users\François\source\repos\AtelierMorpion\MorpionBase\bin\Debug\MorpionBase.pdb
+C:\Users\François\source\repos\AtelierMorpion\MorpionBase\bin\Debug\MorpionBase.xml
+C:\Users\François\source\repos\AtelierMorpion\MorpionBase\obj\Debug\MorpionBase.Resources.resources
+C:\Users\François\source\repos\AtelierMorpion\MorpionBase\obj\Debug\MorpionBase.vbproj.GenerateResource.cache
+C:\Users\François\source\repos\AtelierMorpion\MorpionBase\obj\Debug\MorpionBase.vbproj.CoreCompileInputs.cache
+C:\Users\François\source\repos\AtelierMorpion\MorpionBase\obj\Debug\MorpionBase.dll
+C:\Users\François\source\repos\AtelierMorpion\MorpionBase\obj\Debug\MorpionBase.xml
+C:\Users\François\source\repos\AtelierMorpion\MorpionBase\obj\Debug\MorpionBase.pdb
+C:\Users\François\source\repos\AtelierMorpion\MorpionBase\obj\Debug\MorpionBase.vbproj.AssemblyReference.cache

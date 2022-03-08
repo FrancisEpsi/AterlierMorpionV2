@@ -1,0 +1,74 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+MorpionBase
+</name>
+</assembly>
+<members>
+<member name="T:MorpionBase.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:MorpionBase.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:MorpionBase.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="F:MorpionBase.Message.Command">
+ <summary>
+ La commande principale à communiquer dans ce Message. Les commandes sont listées dans l'énumération MessageContent
+ </summary>
+</member>
+<member name="F:MorpionBase.Message.Args">
+ <summary>
+ Dictionnaire d'argument. A utiliser avec les méthodes prévues à cet effet pour plus de faciliter et de stabilité.
+ </summary>
+</member>
+<member name="F:MorpionBase.Message.Objs">
+ <summary>
+ Liste des objets à placer dans le message (comme des pièces jointes) (prévu au cas ou)
+ </summary>
+</member>
+<member name="M:MorpionBase.Message.AddArg(System.String,System.String)">
+ <summary>
+ Ajoute une valeure à une clée spécifique dans le dictionnaire d'argument.
+ </summary>
+ <param name="Key">La clé du dictionnaire (ou index) sur laquelle la valeure sera ajoutée</param>
+ <param name="Value">La valeure à définir sur la clé du dictionnaire d'argument</param>
+</member>
+<member name="M:MorpionBase.Message.GetArg(System.String)">
+ <summary>
+ Obtient la valeure d'une clé dans le dictionnaire d'argument. Retourne Nothing si la clé n'existe pas.
+ </summary>
+ <param name="Key">La clé du dictionnaire d'argument dans laquelle la valeure à récupérer est stockée</param>
+</member>
+<member name="M:MorpionBase.Message.DeleteArg(System.String)">
+ <summary>
+ Supprime un élément du dictionnaire d'argument grâce à sa clé.
+ </summary>
+ <param name="Key">La clé du dictionnaire d'argument qui permet d'identifier l'élément à supprimer</param>
+ <returns>TRUE si la clé à été correctement supprimée, sinon retourne FALSE si la clé n'a pas pu être supprimée ou bien qu'elle n'existe pas</returns>
+</member>
+<member name="M:MorpionBase.Message.ToBytes">
+ <summary>
+ Sérialise cet objet Message en un tableau d'octet, prêt à être envoyé via socket.
+ </summary>
+ <returns>Un tableau d'octet ou buffer.</returns>
+</member>
+<member name="M:MorpionBase.Message.LoadFromBytes(System.Byte[])">
+ <summary>
+ Charge cet objet Message à partir d'un tableau d'octet reçu d'un socket (ou buffer)
+ </summary>
+ <param name="buffer">Le tableau d'octet reçu par le socket.</param>
+ <returns>TRUE si la sérialisation s'est correctement déroulé et que les propriétées de cet objet message ont bien été définie, sinon FALSE si le buffer est vide, qu'il est impossible de créer un stream à partir du buffer, ou que le processus de désérialisation à échoué.</returns>
+</member>
+</members>
+</doc>

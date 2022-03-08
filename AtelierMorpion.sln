@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Serveur", "AtelierMorpion\Serveur.vbproj", "{CAC4BCFF-9B7A-4F46-8895-7F8CA37E9F52}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Client", "Client\Client.vbproj", "{A73CC268-BD13-4C54-9C83-D418DCD516FA}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MorpionBase", "MorpionBase\MorpionBase.vbproj", "{9852487E-9C3E-461F-B0A4-88813B88EA9E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CAC4BCFF-9B7A-4F46-8895-7F8CA37E9F52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAC4BCFF-9B7A-4F46-8895-7F8CA37E9F52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAC4BCFF-9B7A-4F46-8895-7F8CA37E9F52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAC4BCFF-9B7A-4F46-8895-7F8CA37E9F52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A73CC268-BD13-4C54-9C83-D418DCD516FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A73CC268-BD13-4C54-9C83-D418DCD516FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A73CC268-BD13-4C54-9C83-D418DCD516FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A73CC268-BD13-4C54-9C83-D418DCD516FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9852487E-9C3E-461F-B0A4-88813B88EA9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9852487E-9C3E-461F-B0A4-88813B88EA9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9852487E-9C3E-461F-B0A4-88813B88EA9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9852487E-9C3E-461F-B0A4-88813B88EA9E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AEE4D30F-7829-4DB2-83BC-AFAD543B32B8}
+	EndGlobalSection
+EndGlobal

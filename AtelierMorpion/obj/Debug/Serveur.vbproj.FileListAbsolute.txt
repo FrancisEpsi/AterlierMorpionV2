@@ -1,0 +1,17 @@
+C:\Users\François\source\repos\AtelierMorpion\AtelierMorpion\bin\Debug\AtelierMorpion.exe.config
+C:\Users\François\source\repos\AtelierMorpion\AtelierMorpion\bin\Debug\AtelierMorpion.exe
+C:\Users\François\source\repos\AtelierMorpion\AtelierMorpion\bin\Debug\AtelierMorpion.pdb
+C:\Users\François\source\repos\AtelierMorpion\AtelierMorpion\bin\Debug\AtelierMorpion.xml
+C:\Users\François\source\repos\AtelierMorpion\AtelierMorpion\bin\Debug\MorpionBase.dll
+C:\Users\François\source\repos\AtelierMorpion\AtelierMorpion\bin\Debug\MorpionBase.pdb
+C:\Users\François\source\repos\AtelierMorpion\AtelierMorpion\bin\Debug\MorpionBase.xml
+C:\Users\François\source\repos\AtelierMorpion\AtelierMorpion\obj\Debug\Serveur.vbproj.SuggestedBindingRedirects.cache
+C:\Users\François\source\repos\AtelierMorpion\AtelierMorpion\obj\Debug\AtelierMorpion.Console.resources
+C:\Users\François\source\repos\AtelierMorpion\AtelierMorpion\obj\Debug\AtelierMorpion.Resources.resources
+C:\Users\François\source\repos\AtelierMorpion\AtelierMorpion\obj\Debug\Serveur.vbproj.GenerateResource.cache
+C:\Users\François\source\repos\AtelierMorpion\AtelierMorpion\obj\Debug\Serveur.vbproj.CoreCompileInputs.cache
+C:\Users\François\source\repos\AtelierMorpion\AtelierMorpion\obj\Debug\Serveur.vbproj.CopyComplete
+C:\Users\François\source\repos\AtelierMorpion\AtelierMorpion\obj\Debug\AtelierMorpion.exe
+C:\Users\François\source\repos\AtelierMorpion\AtelierMorpion\obj\Debug\AtelierMorpion.xml
+C:\Users\François\source\repos\AtelierMorpion\AtelierMorpion\obj\Debug\AtelierMorpion.pdb
+C:\Users\François\source\repos\AtelierMorpion\AtelierMorpion\obj\Debug\Serveur.vbproj.AssemblyReference.cache
