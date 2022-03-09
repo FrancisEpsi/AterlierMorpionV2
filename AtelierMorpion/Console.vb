@@ -26,16 +26,27 @@ Public Class Console
 
     Private Sub DémarrerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DémarrerToolStripMenuItem.Click
         Serveur.StartServer()
+        TimerClientListDisplay.Start()
     End Sub
 
     Private Sub ArrêterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ArrêterToolStripMenuItem.Click
         Serveur.StopServer()
+        TimerClientListDisplay.Stop()
     End Sub
 
     Private Sub JoueursToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles JoueursToolStripMenuItem.Click
         SyncLock Serveur.playerListLock
             For Each player In Serveur.playerList
                 MsgBox(player.Pseudo & " " & player.ID & ". PING = " & player.Ping)
+            Next
+        End SyncLock
+    End Sub
+
+    Private Sub TimerClientListDisplay_Tick(sender As Object, e As EventArgs) Handles TimerClientListDisplay.Tick
+        SyncLock Serveur.playerListLock
+            DGV_ClientList.Rows.Clear()
+            For Each player In Serveur.playerList
+                DGV_ClientList.Rows.Add(player.ID, player.Pseudo, player.IP, player.Ping)
             Next
         End SyncLock
     End Sub
@@ -56,6 +67,9 @@ Public Class Server
 
     Public playerList As New List(Of Player)
     Public playerListLock As Object = New Object
+
+    Public gameList As New List(Of Game)
+    Public gameListLock As Object = New Object
 
     Private listenning As Boolean = False
     Private listennerThread As Thread = Nothing
@@ -153,6 +167,21 @@ Public Class Server
     Public Sub Log(ByVal text As String)
         Me.console.Log(text)
     End Sub
+
+    ''' <summary>
+    ''' Fonction permettant de savoir si une partie existe grâce à son identifiant
+    ''' </summary>
+    ''' <param name="gameID">l'identifiant de la partie</param>
+    ''' <returns>TRUE si la partie existe, sinon FALSE</returns>
+    Public Function isGameExist(ByVal gameID As String) As Boolean
+        Dim toReturnValue As Boolean = False
+        SyncLock gameListLock
+            For Each game In gameList
+                If game.ID = gameID Then toReturnValue = True : Exit For
+            Next
+        End SyncLock
+        Return toReturnValue
+    End Function
 
 
 End Class
@@ -284,4 +313,35 @@ Public Class Player
                 Me.Disconnect()
         End Select
     End Sub
+End Class
+
+Public Class Game
+    Public Serveur As Server = Nothing
+    Public ID As String = Nothing
+    Public State As GameState = GameState.Wait
+
+    Public Player1 As Player
+    Public Player2 As Player
+
+    Sub New(ByVal sender As Server)
+        Me.Serveur = sender
+        'On génère un identifiant PIN pour la partie à 4 chiffres:
+        Dim alea As New Random
+        Me.ID = alea.Next(1000, 9999)
+        While Serveur.isGameExist(Me.ID) = False
+            'Tant que l'ID généré est déjà attribué, alors on en génère un autre:
+            Me.ID = alea.Next(1000, 9999)
+        End While
+        'On enregistre la partie dans la liste des parties du serveur:
+        SyncLock Serveur.gameListLock
+            Serveur.gameList.Add(Me)
+        End SyncLock
+
+    End Sub
+
+    Public Enum GameState
+        Wait
+        Started
+        Ended
+    End Enum
 End Class

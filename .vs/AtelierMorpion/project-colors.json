@@ -20,6 +20,11 @@
       "ProjectGuid": "9852487e-9c3e-461f-b0a4-88813b88ea9e",
       "DisplayName": "MorpionBase",
       "ColorIndex": 3
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Fichiers divers",
+      "ColorIndex": -1
     }
   },
   "NextColorIndex": 4
