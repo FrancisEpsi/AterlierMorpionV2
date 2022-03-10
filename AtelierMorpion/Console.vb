@@ -13,6 +13,10 @@ Public Class Console
 
     End Sub
 
+    ''' <summary>
+    ''' Fonction permettant d'afficher des logs
+    ''' </summary>
+    ''' <param name="text">Le texte à afficher</param>
     Public Sub Log(ByVal text As String)
         Dim dAppendLog As New OneStringParamDelegate(AddressOf AppendLog)
         Me.Invoke(dAppendLog, text)
@@ -34,14 +38,9 @@ Public Class Console
         TimerClientListDisplay.Stop()
     End Sub
 
-    Private Sub JoueursToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles JoueursToolStripMenuItem.Click
-        SyncLock Serveur.playerListLock
-            For Each player In Serveur.playerList
-                MsgBox(player.Pseudo & " " & player.ID & ". PING = " & player.Ping)
-            Next
-        End SyncLock
-    End Sub
-
+    ''' <summary>
+    ''' Affiche toutes les secondes la listes des clients
+    ''' </summary>
     Private Sub TimerClientListDisplay_Tick(sender As Object, e As EventArgs) Handles TimerClientListDisplay.Tick
         SyncLock Serveur.playerListLock
             DGV_ClientList.Rows.Clear()
@@ -81,6 +80,9 @@ Public Class Server
         Me.console = sender
     End Sub
 
+    ''' <summary>
+    ''' Démarre le serveur
+    ''' </summary>
     Sub StartServer()
         If listenning = True Then MsgBox("Inutile de démarrer le serveur car il est déjà allumer." & Environment.NewLine & "Veuillez arrêter le serveur puis le démarrer à nouveau pour effectuer un redémarrage proprement.", vbExclamation, "Opération annulée") : Console.Log("Tentative de démarrer du serveur annuler : Le serveur tourne déjà.") : Exit Sub
         playerList = New List(Of Player)
@@ -100,6 +102,9 @@ Public Class Server
         listennerThread.Start()
     End Sub
 
+    ''' <summary>
+    ''' Arrête le serveur
+    ''' </summary>
     Sub StopServer()
         Log("Arrêt du serveur en cours...")
         listenning = False
@@ -108,6 +113,9 @@ Public Class Server
         DisconnectAllPlayersAsync()
     End Sub
 
+    ''' <summary>
+    ''' Fonction gérer sur un autre thread permettant d'accepter les connexions entrantes des clients
+    ''' </summary>
     Private Sub Listen()
         listennerSocket.Listen(2)
         While listenning
@@ -186,7 +194,9 @@ Public Class Server
 
 End Class
 
-
+''' <summary>
+''' Instance de joueur
+''' </summary>
 Public Class Player
     Private server As Server = Nothing
     Private socketSession As Socket = Nothing
@@ -202,6 +212,11 @@ Public Class Player
 
     Public Ping As Long = 0
 
+    ''' <summary>
+    ''' Constructeur d'une classe client
+    ''' </summary>
+    ''' <param name="sock"></param>
+    ''' <param name="sender"></param>
     Sub New(ByVal sock As Socket, ByVal sender As Server)
         Me.socketSession = sock
         Me.server = sender
@@ -216,6 +231,10 @@ Public Class Player
         End If
     End Sub
 
+    ''' <summary>
+    ''' Méthode de déconnexion du client
+    ''' </summary>
+    ''' <param name="RemoveFromPlayerList">TRUE pour supprimer le client de la liste des clients</param>
     Sub Disconnect(Optional ByVal RemoveFromPlayerList As Boolean = True)
         connected = False
         Thread.Sleep(6000) 'On attend que le ReceiveTimout soit dépassé afin que le DataReaderThread se termine par lui même
@@ -231,6 +250,11 @@ Public Class Player
         server.Log("[-] Déconnexion de " & Me.Pseudo & " (" & Me.IP & ")")
     End Sub
 
+    ''' <summary>
+    ''' Envoyer un message au client
+    ''' </summary>
+    ''' <param name="msg">L'objet message à envoyer</param>
+    ''' <returns>TRUE si le message s'est envoyé sinon FALSE</returns>
     Function SendMessage(ByVal msg As Message) As Boolean
         Dim buffer() = msg.ToBytes
         If buffer Is Nothing Then Return False
@@ -243,12 +267,15 @@ Public Class Player
         End Try
     End Function
 
+    ''' <summary>
+    ''' Fonction tournant sur un thread permettant de recevoir les messages envoyé par le client
+    ''' </summary>
     Private Sub DataReader()
         While connected
             Dim buffer(1024) As Byte
             Dim bytes_received As Integer = 0
             Try
-                bytes_received = socketSession.Receive(buffer)
+                bytes_received = socketSession.Receive(buffer) '/!\ Blouant tant que aucunes données n'a été reçu du client
             Catch ex As Exception
 
                 If TypeOf ex Is ArgumentNullException Then
@@ -287,11 +314,15 @@ Public Class Player
         End While
     End Sub
 
+    ''' <summary>
+    ''' Fonction tournant sur un thread permettant de faire le traitement des commandes reçus
+    ''' </summary>
+    ''' <param name="msg">Le message à executer, côté serveur</param>
     Sub ExecuteMessage(ByVal msg As Message)
         server.Log("ExecuteMessage() : " & Me.Pseudo & " > " & msg.Command.ToString)
 
         Select Case msg.Command
-            Case MessageContent.LOGIN
+            Case MessageContent.LOGIN '1er messagee reçu d'un client après sa connexion. Contient le pseudo du joueur.
                 Me.Pseudo = msg.GetArg("PSEUDO")
                 server.Log("+ " & Me.Pseudo)
             Case MessageContent.PING

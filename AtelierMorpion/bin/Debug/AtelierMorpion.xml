@@ -22,5 +22,12 @@ AtelierMorpion
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="M:AtelierMorpion.Server.isGameExist(System.String)">
+ <summary>
+ Fonction permettant de savoir si une partie existe grâce à son identifiant
+ </summary>
+ <param name="gameID">l'identifiant de la partie</param>
+ <returns>TRUE si la partie existe, sinon FALSE</returns>
+</member>
 </members>
 </doc>
